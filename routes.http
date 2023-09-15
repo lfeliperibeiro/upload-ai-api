@@ -9,8 +9,34 @@ POST http://localhost:3333/videos
 Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
 
 ------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="file"; filename="Saltern02N_Mac.mp3"
+Content-Disposition: form-data; name="file"; filename="tom.mp3"
 Content-Type: audio/mpeg; 
 
-< ./Saltern02N_Mac.mp3
+< ./tom.mp3
 ------WebKitFormBoundary7MA4YWxkTrZu0gW--
+
+
+###
+
+# @name create-transcription
+
+POST http://localhost:3333/videos/dcbd2426-4efb-4c85-aa7f-7c408b8d12f0/transcription
+Content-Type: application/json
+
+{
+  "prompt": "novidades arc"
+}
+
+
+###
+
+# @name generate-ai-complete
+
+POST http://localhost:3333/ai/complete
+Content-Type: application/json
+
+{
+  "videoId": "dcbd2426-4efb-4c85-aa7f-7c408b8d12f0",
+  "temperature": 0.5,
+  "prompt": "Gere um resumo da transcrição do video informada a seguir: '''{transcription}'''"
+}
